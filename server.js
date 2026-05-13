@@ -20,10 +20,13 @@ function sendAlert(data) {
     subject: 'VehicleGuard — Crash Alert!',
     text: `CRASH DETECTED!\n\nSeverity: ${data.severity}\nSpeed: ${data.speed} km/h\nLocation: ${data.lat}, ${data.lon}\nAlcohol: ${data.impaired}\nFire: ${data.fire}\nTime: ${data.timestamp}`
   };
+
   transporter.sendMail(mailOptions, (err, info) => {
-   if (err) console.log('Email error FULL:', JSON.stringify(err));
-else console.log('Email sent:', info.response);
-    else console.log('Email sent:', info.response);
+    if (err) {
+      console.log('Email error FULL:', JSON.stringify(err));
+    } else {
+      console.log('Email sent:', info.response);
+    }
   });
 }
 
